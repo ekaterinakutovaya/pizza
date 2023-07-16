@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+
+<body>
+    <header class="header container">
+        <div class="header__block">
+            <div class="header__left">
+                <h1 class="header__title">Jaegar Resto</h1>
+                <p class="header__text">Tuesday, 2 Feb 2021</p>
+            </div>
+            <div class="header__right">
+                <img src="img/icon.svg" alt="" class="header__icon">
+                <input type="text" placeholder="Search for food, coffe, etc.." class="header__input">
+            </div>
+        </div>
+        <div class="tabs">
+            <ul class="tabs__list">
+                <li><a href="#" class="tabs__link tabs__active" data-categoryid="1">Hot Dishes</a></li>
+                <li><a href="#" class="tabs__link" data-categoryid="2">Cold Dishes</a></li>
+                <li><a href="#" class="tabs__link" data-categoryid="3">Soup</a></li>
+                <li><a href="#" class="tabs__link" data-categoryid="4">Grill</a></li>
+                <li><a href="#" class="tabs__link" data-categoryid="5">Appetizer</a></li>
+                <li><a href="#" class="tabs__link" data-categoryid="6">Dessert</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <aside class="aside">
+            <ul class="aside__list">
+                <li><a href="#" class="link" data-menu="#burger"><img src="img/burger.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#home"><img src="img/home.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#settings"><img src="img/settings.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#statistics"><img src="img/statistics.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#email"><img src="img/email.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#notifications"><img src="img/notifications.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#cart"><img src="img/cart.svg" alt=""></a></li>
+                <li><a href="#" class="link" data-menu="#profile"><img src="img/profile.svg" alt=""></a></li>
+            </ul>
+        </aside>
+
+        <section class="hero container">
+            <div class="hero__block">
+                <h2 class="hero__title">Choose Dishes</h2>
+            </div>
+            <div id="products"></div>
+        </section>
+
+        <section class="container">
+
+            <!-- functions -->
+            <div class="functions orders__item side-panel" id="burger">
+                <h3 class="functions__title">Functions</h3>
+                <ul class="functions__list">
+                    <li class="functions__item side-panel__link infoBtn" data-id="info">
+                        <img src="img/icon-1.svg" alt="" class="functions__img">
+                        <h3 class="functions__item-title">Information</h3>
+                    </li>
+                    <li class="functions__item side-panel__link" data-id="language">
+                        <img src="img/icon-2.svg" alt="" class="functions__img">
+                        <h3 class="functions__item-title">Language</h3>
+                    </li>
+                    <li class="functions__item side-panel__link" data-id="history">
+                        <img src="img/icon-3.svg" alt="" class="functions__img">
+                        <h3 class="functions__item-title">Order history</h3>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Information -->
+            <div class="information orders__item side-panel" id="info">
+                <h3 class="information__back">Information</h3>
+                <ul class="information__list">
+                    <li class="information__item">
+                        <img src="img/icon-5.svg" alt="" class="information__img">
+                        <h3 class="information__item-title">+998 71 000 00 71</h3>
+                    </li>
+                    <li class="information__item">
+                        <img src="img/icon-6.svg" alt="" class="information__img">
+                        <h3 class="information__item-title">Tashkent, str. Amir Temur 15</h3>
+                    </li>
+                    <li class="information__item">
+                        <img src="img/icon-7.svg" alt="" class="information__img">
+                        <h3 class="information__item-title">F.P.D_77@gmail.com</h3>
+                    </li>
+                    <li class="information__item">
+                        <img src="img/icon-8.svg" alt="" class="information__img">
+                        <h3 class="information__item-title">www.F.P.D_77.com</h3>
+                    </li>
+                    <li class="information__icons">
+                        <a target="_blank" href="https://www.whatsapp.com/"><img src="img/whatsapp.svg" alt=""></a>
+                        <a target="_blank" href="https://www.instagram.com/"><img src="img/Instagram.svg" alt=""></a>
+                        <a target="_blank" href="https://web.telegram.org/"><img src="img/telegram.svg" alt=""></a>
+                        <a target="_blank" href="https://ru-ru.facebook.com/"><img src="img/facebook.svg" alt=""></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- settings -->
+            <div class="settings orders__item side-panel" id="settings">
+                <h3 class="settings__title">Not Found</h3>
+            </div>
+
+            <!-- statistics -->
+            <div class="statistics orders__item side-panel" id="statistics">
+                <h3 class="statistics__title">Not Found</h3>
+            </div>
+
+            <!-- email -->
+            <div class="email orders__item side-panel" id="email">
+                <h3 class="email__title">There are no letters here yet</h3>
+            </div>
+
+            <!-- notifications -->
+            <div class="notifications orders__item side-panel" id="notifications">
+                <h3 class="notifications__title">There is nothing here yet</h3>
+            </div>
+
+            <!-- cart -->
+            <div class="cart orders__item side-panel" id="cart">
+                <h3 class="cart__title">Orders</h3>
+                <div class="cart__img">
+                    <img src="img/breakfast.png" alt="">
+                </div>
+                <p class="cart__subtitle">No Order</p>
+                <p class="cart__text">Go find the products you like</p>
+                <button class="cart__btn btn-reset side-panel__link" data-id="orders">To Order</button>
+            </div>
+
+            <!-- orders -->
+            <div class="orders orders__item side-panel" id="orders">
+                <h3 class="orders__title">
+                    <img src="img/icon-10.svg" alt="">
+                    Orders #34562
+                </h3>
+                <div class="orders__top">
+                    <a class="orders__top-link">Dine In</a>
+                    <a class="orders__top-link">To Go</a>
+                    <a class="orders__top-link">Delivery</a>
+                </div>
+                <div class="orders__bottom">
+                    <span class="orders__bottom-subtitle">Item</span>
+                    <span class="orders__bottom-subtitle">Qty</span>
+                    <span class="orders__bottom-subtitle">Price</span>
+                </div>
+                <div class="cart-wrapper"></div>
+                <div class="discount">
+                    <h3 class="discount__title">Discount</h3>
+                    <span class="discount__subtitle">$0</span>
+                </div>
+                <div class="subtotal">
+                    <h3 class="subtotal__title">Sub total</h3>
+                    <span class="subtotal__subtitle">$ 21,03</span>
+                </div>
+                <button class="payment-btn btn-reset side-panel__link" data-id="payment">Continue to Payment</button>
+            </div>
+
+            <!-- payment -->
+            <div class="payment orders__item side-panel" id="payment">
+                <h3 class="payment__title">Payment</h3>
+                <p class="payment__text">3 payment method available</p>
+                <h3 class="payment__subtitle">Payment Method</h3>
+                <ul class="payment__list">
+                    <li class="payment__item">
+                        <img src="img/card.svg" alt="" class="payment__img">
+                        <span class="payment__card">Credit Card</span>
+                    </li>
+                    <li class="payment__item">
+                        <img src="img/paypal.svg" alt="" class="payment__img">
+                        <span class="payment__paypal">Paypal</span>
+                    </li>
+                    <li class="payment__item">
+                        <img src="img/wallet.svg" alt="" class="payment__img">
+                        <span class="payment__cash">Cash</span>
+                    </li>
+                </ul>
+                <div class="payment__block-inputs">
+                    <label class="payment__label">Cardholder Name</label>
+                    <input type="text" placeholder="Levi Ackerman" class="payment__input mb">
+                    <label class="payment__label">Card Number</label>
+                    <input type="text" placeholder="2564 1421 0897 1244" class="payment__input">
+                </div>
+                <div class="payment__top">
+                    <div class="payment__top-left">
+                        <label class="payment__label">Expiration Date</label>
+                        <input type="text" placeholder="02/2022" class="payment__top-input mr">
+                    </div>
+                    <div class="payment__top-right">
+                        <label class="payment__label">CVV</label>
+                        <input type="text" placeholder="***" class="payment__top-input">
+                    </div>
+                </div>
+                <div class="payment__bottom">
+                    <div class="payment__bottom-left">
+                        <label class="payment__label">Order Type</label>
+                        <input type="text" placeholder="Dine In" class="payment__bottom-input">
+                    </div>
+                    <div class="payment__bottom-right">
+                        <label class="payment__label">Table no.</label>
+                        <input type="text" placeholder="140" class="payment__bottom-input">
+                    </div>
+                </div>
+                <div class="payment__buttons">
+                    <a href="#" class="payment__cansel">Cancel</a>
+                    <a href="#" class="payment__btn">Confirm Payment</a>
+                </div>
+            </div>
+
+            <!-- Profil -->
+            <div class="profile orders__item side-panel" id="profile">
+                <h3 class="profile__title">Profil</h3>
+                <div class="profile__top">
+                    <img src="img/D.svg" alt="">
+                    <h3 class="profile__top-title">Denis</h3>
+                    <p class="profile__top-text">Edit profile</p>
+                </div>
+                <div class="profile__bottom side-panel__link" data-id="history">
+                    <img src="img/icon-4.svg" alt="">
+                    <h3 class="profile__bottom-title">Order history</h3>
+                </div>
+            </div>
+
+            <!-- history -->
+            <div class="history orders__item side-panel" id="history">
+                <h3 class="history__back">Orders history</h3>
+                <ul class="history__list">
+                    <li class="history__item">
+                        <h3 class="history__title">Orders #34562</h3>
+                        <span class="history__subtitle">Tuesday, 2 Feb 2021</span>
+                    </li>
+                    <li class="history__item">
+                        <h3 class="history__title">Orders #34561</h3>
+                        <span class="history__subtitle">Monday, 1 Feb 2021</span>
+                    </li>
+                    <li class="history__item">
+                        <h3 class="history__title">Orders #34560</h3>
+                        <span class="history__subtitle">Sanday, 31 Jan 2021</span>
+                    </li>
+                    <li class="history__item">
+                        <h3 class="history__title">Orders #34559</h3>
+                        <span class="history__subtitle">Friday, 29 Jan 2021</span>
+                    </li>
+                    <li class="history__item">
+                        <h3 class="history__title">Orders #34558</h3>
+                        <span class="history__subtitle">Wednesday, 27 Jan 2021</span>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+    </main>
+
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/data.js"></script>
+    <script type="module" src="js/tabs.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/counter.js"></script>
+</body>
+
+</html>
