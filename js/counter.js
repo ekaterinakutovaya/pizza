@@ -1,5 +1,5 @@
 function addHandlers(item) {
-  console.log(item);
+  // console.log(item);
   let minus = item.querySelector(".minus");
   let number = item.querySelector(".number");
   let plus = item.querySelector(".plus");

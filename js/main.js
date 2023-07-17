@@ -3,7 +3,7 @@ import { products } from "./data.js";
 
 const app = () => {
   const cartWrapper = document.querySelector(".cart-wrapper"); // вот сюда нам нужно добавить карточку
-  let lSProducts = JSON.parse(localStorage.getItem("selectedProduct"));
+  let lSProducts = JSON.parse(localStorage.getItem("cart"));
 
   if (!lSProducts) {
     lSProducts = [];
@@ -31,72 +31,33 @@ const app = () => {
       // TODO: Kate
       let cart = JSON.parse(localStorage.getItem("cart"));
 
-    
-      if (cart === null) {
+      if (cart !== null) {
+        if (!cart.some((item) => item.productId == selectedProductId)) {
+          cart.push(selectedProduct);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          cartWrapper.insertAdjacentHTML(
+            "beforeend",
+            cardItemHTML(selectedProduct)
+          );
+        } else {
+          const counter = document.querySelector(
+            `[data-counter="${selectedProductId}"]`
+          );
+          let foundIndex = cart.findIndex((item) => item.productId == selectedProductId);
+          cart[foundIndex].count += 1;
+          counter.textContent = cart[foundIndex].count;
+          localStorage.setItem("cart", JSON.stringify(cart));
+        }
       
+      } else {
         cart = [selectedProduct];
         localStorage.setItem("cart", JSON.stringify(cart));
-
         cartWrapper.insertAdjacentHTML(
           "beforeend",
           cardItemHTML(selectedProduct)
         );
-        return;
       }
 
-      const counter = document.querySelector(
-        `[data-counter="${selectedProductId}"]`
-      );
-
-      cart.forEach((item) => {
-        if (+item.productId == +selectedProductId) {
-          item.count += 1;
-          counter.textContent = item.count;
-          localStorage.setItem("cart", JSON.stringify(cart));
-          return
-        } 
-
-        console.log(+item.productId != +selectedProductId);
-        if (+item.productId != +selectedProductId) {
-          let existingCart = JSON.parse(localStorage.getItem("cart"));
-          console.log(existingCart);
-          let updatedCart = [...existingCart, selectedProduct];
-          // console.log(JSON.stringify(updatedCart));
-          localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-          // cartWrapper.insertAdjacentHTML(
-          //   "beforeend",
-          //   cardItemHTML(selectedProduct)
-          // );
-        }
-      });
-
-      // localStorage.setItem("cart", JSON.stringify(cart));
-
-      // let preselectedProducts = JSON.parse(localStorage.getItem('selectedProduct'))
-
-      // if (!preselectedProducts) {
-      //     localStorage.setItem('selectedProduct', JSON.stringify([selectedProduct]))
-      //     cartWrapper.insertAdjacentHTML(
-      //         'beforeend',
-      //         cardItemHTML(selectedProduct)
-      //     );
-      //     return
-      // }
-
-      // const existingProduct = preselectedProducts.find((item) => item.productId === selectedProduct.productId)
-
-      // if (existingProduct) {
-      //     return
-      // }
-
-      // localStorage.setItem('selectedProduct', JSON.stringify([...preselectedProducts, selectedProduct]))
-      // cartWrapper.insertAdjacentHTML(
-      //     'beforeend',
-      //     cardItemHTML(selectedProduct)
-      // );
-
-      // handleDeleteCartItem()
     });
   });
 
@@ -109,29 +70,29 @@ const handleDeleteCartItem = () => {
     addHandlers(item);
   });
 
-  const deleteBtns = document.querySelectorAll(".delete-btn");
-  deleteBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      cartItems.forEach((item) => {
-        if (item.dataset.id == this.dataset.delete) {
-          let products = JSON.parse(localStorage.getItem("selectedProduct"));
+  // const deleteBtns = document.querySelectorAll(".delete-btn");
+  // deleteBtns.forEach((btn) => {
+  //   btn.addEventListener("click", function () {
+  //     cartItems.forEach((item) => {
+  //       if (item.dataset.id == this.dataset.delete) {
+  //         let products = JSON.parse(localStorage.getItem("selectedProduct"));
 
-          if (!products) {
-            return;
-          }
+  //         if (!products) {
+  //           return;
+  //         }
 
-          const filteredProducts = products.filter(
-            (product) => product.productId != item.dataset.id
-          );
-          localStorage.setItem(
-            "selectedProduct",
-            JSON.stringify(filteredProducts)
-          );
-          item.remove();
-        }
-      });
-    });
-  });
+  //         const filteredProducts = products.filter(
+  //           (product) => product.productId != item.dataset.id
+  //         );
+  //         localStorage.setItem(
+  //           "selectedProduct",
+  //           JSON.stringify(filteredProducts)
+  //         );
+  //         item.remove();
+  //       }
+  //     });
+  //   });
+  // });
 };
 
 // Cards
@@ -173,8 +134,22 @@ app();
 
 // TODO: Kate
 document.addEventListener("click", function (e) {
-  // console.log(e.target.classList);
+  
   if (e.target.classList.contains("plus")) {
     // console.log("plus");
+  }
+  if (e.target.classList.contains("delete-btn")) {
+    // console.log(e.target.dataset.delete);
+    const productIdToDelete = e.target.dataset.delete;
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    let updatedCart = cart.filter((item) => item.productId != productIdToDelete);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    const cartWrapper = document.querySelector(".cart-wrapper");
+    const foundCartItem = cartWrapper.querySelector(
+      `[data-id="${productIdToDelete}"]`
+    );
+   
+    cartWrapper.removeChild(foundCartItem);
   }
 });

@@ -17,9 +17,9 @@ export const cardItemHTML = (cartItem) => `
         </div>
         <div class="orders__end">
             <input type="text" placeholder="Please, just a little bit spicy only." disabled class="orders__end-input">
-            <a href="#" class="delete-btn" data-delete="${cartItem.productId}">
+            <button href="#" class="delete-btn" data-delete="${cartItem.productId}">
                 <img src="img/delete.svg" alt="">
-            </a>
+            </button>
         </div>
     </div>
 `;
